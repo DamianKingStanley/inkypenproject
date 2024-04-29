@@ -8,190 +8,185 @@ import multer from "multer";
 dotenv.config();
 const secret = process.env.JWT_SECRET;
 
-export const userRegister = async(req, res) => {
-    try {
-        const userInfo = req.body;
-        const oldUser = await userModel.findOne({ email: userInfo.email });
+export const userRegister = async (req, res) => {
+  try {
+    const userInfo = req.body;
+    const oldUser = await userModel.findOne({ email: userInfo.email });
 
-        if (oldUser) {
-            return res.status(401).json({ message: "email already exist" });
-        }
-        const hashPassword = await bcrypt.hash(userInfo.password, 12);
-        const user = await userModel.create({
-            fullname: userInfo.fullName,
-            username: userInfo.userName,
-            email: userInfo.email,
-            password: hashPassword,
-            phoneNumber: userInfo.phoneNumber,
-            location: userInfo.location,
-            gender: userInfo.gender,
-            dateOfBirth: userInfo.dateOfBirth,
-            interestedIn: userInfo.interestedIn,
-        });
-        console.log(userInfo);
-        res.status(200).json({ message: "Registration succesfully", user });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+    if (oldUser) {
+      return res.status(401).json({ message: "email already exist" });
     }
+    const hashPassword = await bcrypt.hash(userInfo.password, 12);
+    const user = await userModel.create({
+      fullname: userInfo.FullName,
+      username: userInfo.UserName,
+      email: userInfo.email,
+      password: hashPassword,
+    });
+    console.log(userInfo);
+    res.status(200).json({ message: "Registration succesfully", user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-export const login = async(req, res) => {
-    try {
-        const secret = process.env.JWT_SECRET;
-        const userInfo = req.body;
-        const oldUser = await userModel.findOne({ email: userInfo.email });
-        if (!oldUser) {
-            return res.status(401).json({ message: "wrong email" });
-        }
-        const checkPassword = await bcrypt.compare(
-            userInfo.password,
-            oldUser.password
-        );
-        if (!checkPassword) {
-            return res.status(401).json({ message: "Invalid credential" });
-        }
-        const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
-            expiresIn: "2d",
-        });
-        const formattedResult = {
-            id: oldUser._id,
-            email: oldUser.email,
-            fullname: oldUser.fullname,
-            username: oldUser.username,
-        };
-        res.status(200).json({ result: formattedResult, token });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+export const login = async (req, res) => {
+  try {
+const secret = process.env.JWT_SECRET;
+    const userInfo = req.body;
+    const oldUser = await userModel.findOne({ email: userInfo.email });
+    if (!oldUser) {
+      return res.status(401).json({ message: "wrong email" });
     }
+    const checkPassword = await bcrypt.compare(
+      userInfo.password,
+      oldUser.password
+    );
+    if (!checkPassword) {
+      return res.status(401).json({ message: "Invalid credential" });
+    }
+    const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
+      expiresIn: "2d",
+    });
+    const formattedResult = {
+      id: oldUser._id,
+      email: oldUser.email,
+      fullname: oldUser.fullname,
+      username: oldUser.username,
+    };
+    res.status(200).json({ result: formattedResult, token });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-const getUserProfile = async(req, res) => {
-    try {
-        const userId = req.params.userId;
+const getUserProfile = async (req, res) => {
+  try {
+    const userId = req.params.userId;
 
-        const user = await userModel.findById(userId);
+    const user = await userModel.findById(userId);
 
-        if (!user) {
-            return res.status(404).json({ error: "User not found" });
-        }
-
-        res.json(user);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal server error" });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
     }
+
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 // Set up storage for uploaded files
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, "uploads"); // Set the destination folder where uploaded files will be stored
-    },
-    filename: function(req, file, cb) {
-        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-        cb(null, Date.now() + "-" + file.originalname); // Set the filename for the uploaded file
-    },
+  destination: function (req, file, cb) {
+    cb(null, "uploads"); // Set the destination folder where uploaded files will be stored
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, Date.now() + "-" + file.originalname); // Set the filename for the uploaded file
+  },
 });
 
 // Create the multer upload instance
 const upload = multer({ storage: storage });
 
 // Update user information
-const updateUserProfile = async(req, res) => {
-    try {
-        const userId = req.params.userId;
-        const { fullname, username, phoneNumber, location, profilePicture } =
-        req.body;
+const updateUserProfile = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const { fullname, username, phoneNumber, location, profilePicture } =
+      req.body;
 
-        // let profilePicture = req.file ? req.file.path : null;
+    // let profilePicture = req.file ? req.file.path : null;
 
-        const user = await userModel.findById(userId);
+    const user = await userModel.findById(userId);
 
-        if (!user) {
-            return res.status(404).json({ error: "User not found" });
-        }
-
-        user.fullname = fullname;
-        user.username = username;
-        user.location = location;
-        user.phoneNumber = phoneNumber;
-        user.profilePicture = profilePicture;
-
-        // if (req.file) {
-        //     user.profilePicture = req.file.path.replace(/\\/g, "/");
-        // }
-
-        // if (profilePicture) {
-        //     user.profilePicture = profilePicture;
-        // }
-
-        const updatedUser = await user.save();
-
-        // updatedUser.profilePicture = updatedUser.profilePicture.replace(/\\/g, "/");
-
-        res.json(updatedUser);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal server error" });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
     }
+
+    user.fullname = fullname;
+    user.username = username;
+    user.location = location;
+    user.phoneNumber = phoneNumber;
+    user.profilePicture = profilePicture;
+
+    // if (req.file) {
+    //     user.profilePicture = req.file.path.replace(/\\/g, "/");
+    // }
+
+    // if (profilePicture) {
+    //     user.profilePicture = profilePicture;
+    // }
+
+    const updatedUser = await user.save();
+
+    // updatedUser.profilePicture = updatedUser.profilePicture.replace(/\\/g, "/");
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
 export { getUserProfile, updateUserProfile };
 
-export const getUserPosts = async(req, res) => {
-    try {
-        const { userId } = req.params;
-        const userPosts = await postModel.find({ userId });
-        res.json({ userPosts });
-    } catch (error) {
-        console.error("Error fetching user posts:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
+export const getUserPosts = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userPosts = await postModel.find({ userId });
+    res.json({ userPosts });
+  } catch (error) {
+    console.error("Error fetching user posts:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
 
-export const getUserById = async(req, res) => {
-    try {
-        const user = await userModel.findById(req.params.userId);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-        res.status(200).json({ user });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+export const getUserById = async (req, res) => {
+  try {
+    const user = await userModel.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
     }
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
-export const likePostByUser = async(req, res) => {
-    try {
-        const { postId } = req.body;
-        const userId = req.user.id; // Assuming you have middleware to extract user ID from the request
+export const likePostByUser = async (req, res) => {
+  try {
+    const { postId } = req.body;
+    const userId = req.user.id; // Assuming you have middleware to extract user ID from the request
 
-        // Check if the user has already liked the post
-        const user = await UserModel.findById(userId);
-        if (user.likedPosts.includes(postId)) {
-            console.log("User has already liked this post.");
-            return res
-                .status(400)
-                .json({ message: "You have already liked this post." });
-        }
-
-        // Add the liked post to the user's likedPosts array
-        user.likedPosts.push(postId);
-        await user.save();
-
-        res.status(200).json({ message: "Post liked successfully." });
-    } catch (error) {
-        console.error("Error liking post by user:", error);
-        res.status(500).json({ message: "Internal Server Error" });
+    // Check if the user has already liked the post
+    const user = await UserModel.findById(userId);
+    if (user.likedPosts.includes(postId)) {
+      console.log("User has already liked this post.");
+      return res
+        .status(400)
+        .json({ message: "You have already liked this post." });
     }
+
+    // Add the liked post to the user's likedPosts array
+    user.likedPosts.push(postId);
+    await user.save();
+
+    res.status(200).json({ message: "Post liked successfully." });
+  } catch (error) {
+    console.error("Error liking post by user:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
 };
 
-export const getAllUsers = async(req, res) => {
-    try {
-        const users = await userModel.find();
-        res.json(users);
-    } catch (error) {
-        console.error("Error fetching users:", error);
-        res.status(500).json({ error: "Internal server error" });
-    }
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.find();
+    res.json(users);
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
 };
