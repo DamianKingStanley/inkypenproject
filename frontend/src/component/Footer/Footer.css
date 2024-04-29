@@ -1,0 +1,41 @@
+.footerLists {
+  padding: 50px 100px;
+  background-color: black;
+}
+.footerLists ul {
+  text-align: center;
+}
+.footerLists li {
+  list-style-type: none;
+  display: inline;
+  padding: 30px;
+  gap: 20px;
+  font-size: 20px;
+}
+.footerLists a {
+  text-decoration: none;
+  color: white;
+}
+.footerLists p {
+  text-align: center;
+  color: white;
+}
+@media screen and (max-width: 980px) {
+  .footerLists {
+    padding: 10px 0px;
+  }
+  .footerLists ul {
+    display: inline;
+  }
+  .footerLists li {
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+  }
+  .footerLists a {
+    font-size: 12px;
+  }
+  .footerLists p {
+    font-size: 12px;
+  }
+}

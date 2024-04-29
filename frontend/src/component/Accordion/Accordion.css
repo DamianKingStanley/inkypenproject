@@ -1,0 +1,48 @@
+.AccordionBody {
+    background-color: black;
+    color: white;
+    padding: 100px 0px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.AccordionBody h1 {
+    text-align: center;
+}
+
+.accordion {
+    padding: 30px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.accordion-content {
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.arrow {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 980px) {
+    .AccordionBody {
+        padding: 30px 0px;
+    }
+    .AccordionBody h1 {
+        text-align: center;
+        font-size: 25px;
+        padding: 10px;
+        color: #fbfade;
+    }
+    .accordion {
+        padding: 10px;
+    }
+    .accordion-header h3 {
+        font-size: 20px;
+    }
+    .accordion-content {
+        padding-top: 20px;
+        padding: 0px 20px;
+        font-size: 15px;
+    }
+}

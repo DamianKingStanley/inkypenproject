@@ -1,0 +1,11 @@
+#loaderImg {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 980px) {
+  #loaderImg {
+    width: 100%;
+    height: auto;
+  }
+}

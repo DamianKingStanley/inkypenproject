@@ -1,0 +1,196 @@
+.comment-container {
+  margin-top: 20px;
+  padding: 40px 40px 10px 40px;
+}
+
+.comment-container input {
+  width: 500px;
+  height: 40px;
+  padding: 5px;
+}
+
+#postCommentBtn {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+}
+
+.postedComments {
+  padding: 10px 40px 40px 40px;
+}
+
+.commentAction {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.commentAction h1 {
+  font-size: 15px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.editDelete {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.editDelete p {
+  font-size: 12px;
+  color: #dc3545;
+  margin-top: 17px;
+}
+
+.EditComment input {
+  width: 500px;
+  height: 40px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.EditComment button {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.deleteConfirm {
+  padding: 10px 40px;
+}
+
+.deleteConfirm {
+  background-color: #202068;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+}
+
+.deleteConfirm p {
+  font-size: 12px;
+}
+
+.deleteConfirm button {
+  background-color: #dc3545;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 10px;
+}
+
+.commentInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+#commentersPicture {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.commentInfo p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.loginCommentMessage {
+  background-color: #202068;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  animation: fadeOut 20s forwards;
+  /* Apply the fade-out animation */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .comment-container {
+    margin-top: 20px;
+    padding: 20px 20px 10px 20px;
+  }
+  .comment-container input {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+  }
+  .postedComments {
+    padding: 10px 20px 20px 20px;
+  }
+  .commentAction {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 0px;
+  }
+  .commentAction h1 {
+    font-size: 15px;
+    padding: 5px;
+    margin-top: 0px;
+  }
+  .editDelete {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    cursor: pointer;
+  }
+  .EditComment input {
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 20px;
+  }
+  .EditComment button {
+    font-size: 12px;
+    padding: 10px;
+    margin-left: 10px;
+  }
+  #commentersPicture {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+  .commentInfo p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+}

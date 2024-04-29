@@ -1,0 +1,30 @@
+#side-menu {
+  background-color: #020218;
+  padding: 0px;
+  width: 300px;
+  height: 100%;
+}
+#side-menu h1 {
+  color: aliceblue;
+  text-align: center;
+  margin: 10px 0px;
+  font-size: 25px;
+}
+.AdminCol-2 {
+  border: 1px red dotted;
+}
+.display-table {
+  display: table;
+  height: 1000px;
+}
+.display-table-row {
+  display: table-row;
+  height: 1000px;
+}
+.display-table-cell {
+  display: table-cell;
+  height: 1000px;
+}
+.valign-top {
+  vertical-align: top;
+}

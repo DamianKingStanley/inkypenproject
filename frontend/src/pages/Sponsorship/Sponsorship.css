@@ -1,0 +1,93 @@
+.donation-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.donation-form h2 {
+    text-align: center;
+    color: #333;
+}
+
+.donation-form form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.donation-form label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.donation-form select,
+.donation-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.donation-form .bank-details {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.donation-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donation-form button:hover {
+    background-color: #45a049;
+}
+
+.donation-form .message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.donation-form .message p {
+    font-size: 18px;
+    color: #333;
+}
+
+.donation-form .message button {
+    margin-top: 10px;
+}
+
+.cardAvailable {
+    color: red;
+}
+
+.thankyoudonation {
+    margin: 40% 20%;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 980px) {
+    .donation-form {
+        max-width: auto;
+        margin: 0 auto;
+        padding: 40px;
+        border-radius: 10px;
+    }
+    .cardAvailable {
+        color: red;
+        font-size: 13px;
+    }
+    .thankyoudonation {
+        margin: 20% 10%;
+    }
+}

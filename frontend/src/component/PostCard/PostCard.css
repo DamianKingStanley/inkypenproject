@@ -1,0 +1,131 @@
+.PostCardBody {
+    margin-top: 50px;
+    padding: 10px 50px;
+}
+
+.post_wrapper {
+    border: 5px groove;
+    border-color: white;
+    border-radius: 10px;
+    background-color: #200788;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+}
+
+.postCardSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.post_Top {
+    padding: 10px 20px;
+    line-height: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+}
+
+.MainContent {
+    padding: 10px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#ss-choice {
+    background-color: #dc3545;
+    font-size: 15px;
+    border-radius: 15px;
+    width: fit-content;
+    padding: 5px;
+    color: white;
+    margin: 0% 10%;
+    padding: 0% 35%;
+}
+
+.post_user_details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    line-height: 1px;
+}
+
+.displaypicture {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.default-avatar-icon {
+    width: 50px;
+    height: 50px;
+    color: #555;
+}
+
+.post_actions {
+    display: flex;
+    align-items: center;
+    padding: 0% 35%;
+}
+
+.post_actions span {
+    padding: 10px;
+}
+
+#displaydate {
+    font-size: 12px;
+}
+
+#heart {
+    color: red;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.theAuthor {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+@media screen and (max-width: 980px) {
+    .PostCardBody {
+        margin-top: 30px;
+        padding: 10px 20px;
+    }
+    .theAuthor {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .postCardSection {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .MainContent {
+        padding: 10px;
+        text-align: center;
+    }
+    .post_actions {
+        display: flex;
+        align-items: center;
+        /* padding-left: 100px; */
+    }
+    #ss-choice {
+        background-color: #dc3545;
+        font-size: 15px;
+        border-radius: 15px;
+        width: fit-content;
+        padding: 5px;
+        color: white;
+        /* margin-left: 100px; */
+        margin: 0% 25%;
+        padding: 0% 15%;
+    }
+}

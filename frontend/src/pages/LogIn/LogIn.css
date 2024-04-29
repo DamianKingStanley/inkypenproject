@@ -1,0 +1,93 @@
+.LogInbody {
+  background-color: beige;
+  padding-bottom: 100px;
+}
+
+.Login {
+  padding: 50px 100px;
+}
+
+.Login p {
+  font-size: 20px;
+}
+
+#emailL,
+#passwordL {
+  width: 500px;
+  height: 50px;
+  padding-left: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  background: transparent;
+}
+
+#emailL:hover,
+#passwordL:hover {
+  border: 3px solid;
+  border-color: #0b5ed7;
+}
+
+#submitbtn {
+  width: 500px;
+  height: 50px;
+  background-color: blue;
+  color: white;
+  font-size: 25px;
+  border-radius: 5px;
+}
+
+#googlebtn {
+  width: 300px;
+  height: 50px;
+  background-color: #ada6a6;
+  font-weight: bold;
+}
+
+#submitbtn:hover,
+#submitbtn::after {
+  background-color: #0b5ed7;
+}
+
+#googlebtn:hover,
+#googlebtn::after {
+  background-color: #e1e1e1;
+}
+
+#Loginform a {
+  text-decoration: none;
+}
+
+.login-success {
+  color: blue;
+}
+
+.login-error {
+  color: red;
+}
+
+@media screen and (max-width: 980px) {
+  .Login {
+    padding: 20px 40px;
+  }
+  .Login p {
+    font-size: 16px;
+  }
+  #emailL,
+  #passwordL {
+    width: 250px;
+    height: 40px;
+    padding-left: 0px;
+  }
+  #submitbtn {
+    width: 250px;
+    height: 40px;
+    font-size: 15px;
+  }
+  #googlebtn {
+    width: 250px;
+    height: 40px;
+  }
+}

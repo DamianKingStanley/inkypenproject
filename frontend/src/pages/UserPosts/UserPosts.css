@@ -1,0 +1,87 @@
+.UsersContents {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px 100px;
+}
+
+.authorDetails {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 50px;
+    background-color: #200788;
+    color: white;
+}
+
+.authorDetails h3 {
+    font-size: 20px;
+}
+
+#followBtn {
+    border: none;
+    background-color: #202176;
+    color: white;
+    padding: 5px;
+}
+
+.writerPicture {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid whitesmoke;
+}
+
+.EachContent {
+    padding: 20px 0px;
+    background-color: #202176;
+    border-radius: 10px;
+    border: 5px solid white;
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.EachContentTop {
+    line-height: 5px;
+    text-align: center;
+}
+
+.content {
+    padding: 10px;
+    text-align: center;
+}
+
+#s-choice {
+    background-color: #dc3545;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    max-width: 100px;
+    margin-left: 130px;
+}
+
+@media screen and (max-width: 980px) {
+    .UsersContents {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px 10px;
+    }
+    .authorDetails {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        padding: 10px;
+    }
+    #s-choice {
+        background-color: #dc3545;
+        padding: 10px;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        max-width: 100px;
+        margin-left: 110px;
+    }
+}

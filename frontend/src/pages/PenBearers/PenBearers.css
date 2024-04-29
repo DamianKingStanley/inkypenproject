@@ -1,0 +1,51 @@
+.PenBearersSection {
+    background-color: aliceblue;
+    height: fit-content;
+}
+
+.Penbearers {
+    padding: 20px 50px 100px 50px;
+}
+
+.singularUser {
+    margin-bottom: 20px;
+    background-color: #200788;
+    color: white;
+    padding: 5px;
+    padding-left: 20px;
+    cursor: pointer;
+    width: 300px;
+}
+
+.singularUser:hover {
+    background-color: #100443;
+}
+
+#penbearerImage {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: 2px solid white;
+}
+
+#penbearerUsername {
+    font-size: 20px;
+}
+
+@media screen and (max-width: 980px) {
+    .Penbearers {
+        padding: 20px 10px 50px 20px;
+    }
+    .singularUser {
+        padding-left: 10px;
+    }
+    #penbearerImage {
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        border: 2px solid white;
+    }
+    #penbearerUsername {
+        font-size: 15px;
+    }
+}

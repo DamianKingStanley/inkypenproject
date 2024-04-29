@@ -1,0 +1,71 @@
+.DashboardBody {
+  background-color: aliceblue;
+}
+
+.UserHeader {
+  background-color: #fbfade;
+  padding: 30px;
+  line-height: 12px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.updateAndPostBtn {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.updateOnly {
+  margin-top: 5px;
+}
+
+#posticon {
+  width: 30px;
+  height: 30px;
+}
+
+#profileUpdateBtn {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 2px;
+  width: 120px;
+  height: 40px;
+}
+
+#postContentBtn {
+  background-color: rgb(32, 32, 104);
+  padding: 5px;
+  width: 150px;
+  height: 40px;
+  margin-top: 5px;
+}
+
+#postContentBtn a {
+  color: white;
+  text-decoration: none;
+}
+
+.profilePicture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileIcon {
+  width: 50px;
+  height: 50px;
+  color: #555;
+}
+
+@media screen and (max-width: 980px) {
+  #postContentBtn {
+    width: 140px;
+    height: 40px;
+    margin-top: 5px;
+  }
+  .updateAndPostBtn {
+    gap: 10px;
+  }
+}
