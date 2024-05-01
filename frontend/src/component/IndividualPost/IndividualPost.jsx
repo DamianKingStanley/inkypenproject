@@ -64,7 +64,7 @@ const IndividualPost = () => {
   const confirmDeletePost = async (postId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/posts/edit/${postId}`,
+        `http://inkypenapi.inkypen.com.ng/posts/edit/${postId}`,
         {
           headers: {
             Authorization: `Bearer ${getUserToken()}`,
@@ -85,11 +85,14 @@ const IndividualPost = () => {
 
   const handleEditPost = async (postId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/post/${postId}`, {
-        headers: {
-          Authorization: `Bearer ${getUserToken()}`,
-        },
-      });
+      const response = await axios.get(
+        `http://inkypenapi.inkypen.com.ng/post/${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getUserToken()}`,
+          },
+        }
+      );
 
       if (response.status === 200) {
         const postData = response.data;
@@ -130,7 +133,7 @@ const IndividualPost = () => {
     const fetchPosts = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/posts/user?userId=${userId}`
+          `http://inkypenapi.inkypen.com.ng/posts/user?userId=${userId}`
         );
         const data = await response.json();
         const reversedData = data.reverse();

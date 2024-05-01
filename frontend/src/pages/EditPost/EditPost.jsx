@@ -19,7 +19,9 @@ const EditPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/post/${id}`);
+        const response = await axios.get(
+          `http://inkypenapi.inkypen.com.ng/post/${id}`
+        );
         const { title, textAreaValue, selectedChoice } =
           response.data.SinglePost;
         setTitle(title);
@@ -56,7 +58,7 @@ const EditPost = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:5000/posts/edit/${id}`,
+        `http://inkypenapi.inkypen.com.ng/posts/edit/${id}`,
         {
           title,
           textAreaValue,

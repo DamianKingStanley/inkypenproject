@@ -32,7 +32,7 @@ export const userRegister = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-const secret = process.env.JWT_SECRET;
+    const secret = process.env.JWT_SECRET;
     const userInfo = req.body;
     const oldUser = await userModel.findOne({ email: userInfo.email });
     if (!oldUser) {

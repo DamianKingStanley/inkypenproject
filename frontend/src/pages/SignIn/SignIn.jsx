@@ -38,19 +38,22 @@ const SignIn = () => {
   const submitForm = async () => {
     try {
       if (password === ConfirmPassword) {
-        const response = await fetch("http://localhost:5000/user/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            FullName,
-            UserName,
-            email,
-            password,
-            ConfirmPassword,
-          }),
-        });
+        const response = await fetch(
+          "http://inkypenapi.inkypen.com.ng/user/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              FullName,
+              UserName,
+              email,
+              password,
+              ConfirmPassword,
+            }),
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           setRegisterMessage("Registered successfully");

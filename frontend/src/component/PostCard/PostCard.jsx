@@ -16,7 +16,7 @@ const PostCard = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/posts", {
+        const response = await fetch("http://inkypenapi.inkypen.com.ng/posts", {
           headers: {
             // Authorization: `Bearer ${userData.token}`,
           },
@@ -66,7 +66,7 @@ const PostCard = () => {
   const handlePostClick = async (postId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/posts/${postId}/view`
+        `http://inkypenapi.inkypen.com.ng/posts/${postId}/view`
       );
       console.log("View count updated:", response);
 
@@ -97,7 +97,7 @@ const PostCard = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/posts/${postId}/like`,
+        `http://inkypenapi.inkypen.com.ng/posts/${postId}/like`,
         {},
         {
           headers: {

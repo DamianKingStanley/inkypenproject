@@ -2,10 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import morgan from "morgan";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import postModel from "./models/post.js";
-import userModel from "./models/user.js";
 import postRoute from "./routes/postRoute.js";
 import userRoute from "./routes/userRoute.js";
 import commentRoute from "./routes/commentRoute.js";
@@ -20,21 +16,21 @@ app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
-// const MONGODB_URL = "mongodb://localhost:27017/Inkypen_db";
-const MONGODB_URL =
-  "mongodb+srv://webmanagement:webmanagement@damian.yv76yyk.mongodb.net/InkypenWebsite_db";
+const PORT = process.env.PORT || 5000;
+const MONGODB_URL = process.env.MONGODB_URL;
 
-const PORT = 5000;
-await mongoose
-  .connect(MONGODB_URL)
-  .then(() => {
+async function startServer() {
+  try {
+    await mongoose.connect(MONGODB_URL);
     app.listen(PORT, () => {
-      console.log(`server is listening on port ${PORT}`);
+      console.log(`Server is listening on port ${PORT}`);
     });
-  })
-  .catch((error) => {
-    console.log(`${error} did not connect`);
-  });
+  } catch (error) {
+    console.error("Failed to connect to MongoDB:", error);
+  }
+}
+
+startServer();
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome" });

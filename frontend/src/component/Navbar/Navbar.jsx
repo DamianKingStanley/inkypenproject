@@ -69,7 +69,7 @@ const Navbar = () => {
         const userId = userData.result.id;
 
         const response = await fetch(
-          `http://localhost:5000/user/profile/${userId}`,
+          `http://inkypenapi.inkypen.com.ng/user/profile/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${userData.token}`,

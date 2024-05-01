@@ -15,7 +15,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/posts");
+        const response = await axios.get(
+          "http://inkypenapi.inkypen.com.ng/posts"
+        );
         const data = response.data; // Use response.data directly without calling .json()
         const reversedData = Array.isArray(data.fetchPosts)
           ? data.fetchPosts.reverse()

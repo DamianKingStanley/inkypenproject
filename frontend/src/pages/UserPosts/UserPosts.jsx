@@ -22,12 +22,12 @@ const UserPosts = () => {
     const fetchUserPosts = async () => {
       try {
         const userResponse = await axios.get(
-          `http://localhost:5000/user/${userId}`
+          `http://inkypenapi.inkypen.com.ng/user/${userId}`
         );
         setUserData(userResponse.data.user);
 
         const response = await axios.get(
-          `http://localhost:5000/user/${userId}/posts`
+          `http://inkypenapi.inkypen.com.ng/user/${userId}/posts`
         );
 
         const sortedPosts = response.data.userPosts.sort((a, b) => {
@@ -67,7 +67,7 @@ const UserPosts = () => {
   const handlePostClick = async (postId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/posts/${postId}/view`
+        `http://inkypenapi.inkypen.com.ng/posts/${postId}/view`
       );
       console.log("View count updated:", response);
 
@@ -98,7 +98,7 @@ const UserPosts = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/posts/${postId}/like`,
+        `http://inkypenapi.inkypen.com.ng/posts/${postId}/like`,
         {},
         {
           headers: {

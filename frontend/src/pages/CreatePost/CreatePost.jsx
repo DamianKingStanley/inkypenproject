@@ -19,7 +19,9 @@ const CreatePost = ({}) => {
       try {
         const userData = JSON.parse(sessionStorage.getItem("userData"));
         const userId = userData?.result?.id;
-        const response = await fetch(`http://localhost:5000/user/${userId}`);
+        const response = await fetch(
+          `http://inkypenapi.inkypen.com.ng/user/${userId}`
+        );
         const data = await response.json();
 
         setUserPicture(data.user.profilePicture); // Set user's profile picture from backend
@@ -54,7 +56,7 @@ const CreatePost = ({}) => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/posts", {
+      const response = await fetch("http://inkypenapi.inkypen.com.ng/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

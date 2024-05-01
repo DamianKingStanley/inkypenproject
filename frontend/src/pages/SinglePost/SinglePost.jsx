@@ -17,7 +17,9 @@ const SinglePost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/post/${id}`);
+        const response = await axios.get(
+          `http://inkypenapi.inkypen.com.ng/post/${id}`
+        );
         setPost(response.data.SinglePost);
       } catch (error) {
         console.log(error);

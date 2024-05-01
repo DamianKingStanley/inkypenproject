@@ -17,7 +17,9 @@ const CommentComponent = ({ postId }) => {
       try {
         const userData = JSON.parse(sessionStorage.getItem("userData"));
         const userId = userData?.result?.id;
-        const response = await fetch(`http://localhost:5000/user/${userId}`);
+        const response = await fetch(
+          `http://inkypenapi.inkypen.com.ng/user/${userId}`
+        );
         const data = await response.json();
         setUserPicture(data.user.profilePicture);
         setUserUsername(data.user.username); // Set user's profile picture from backend
@@ -33,7 +35,7 @@ const CommentComponent = ({ postId }) => {
     const fetchComments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/comments/${postId}`
+          `http://inkypenapi.inkypen.com.ng/comments/${postId}`
         );
         setComments(response.data);
       } catch (error) {
@@ -57,7 +59,7 @@ const CommentComponent = ({ postId }) => {
       const username = userUsername;
       const profilePicture = userPicture;
       const response = await axios.post(
-        `http://localhost:5000/${postId}/comments`,
+        `http://inkypenapi.inkypen.com.ng/${postId}/comments`,
         {
           content: newComment,
           postId: postId,
@@ -81,7 +83,7 @@ const CommentComponent = ({ postId }) => {
   const handleSaveEdit = async (commentId, updatedContent) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/${postId}/comments/${commentId}`,
+        `http://inkypenapi.inkypen.com.ng/${postId}/comments/${commentId}`,
         {
           content: updatedContent,
         }
@@ -108,7 +110,7 @@ const CommentComponent = ({ postId }) => {
   const confirmDelete = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/${postId}/comments/${deleteConfirmation}`
+        `http://inkypenapi.inkypen.com.ng/${postId}/comments/${deleteConfirmation}`
       );
       const filteredComments = comments.filter(
         (comment) => comment._id !== deleteConfirmation

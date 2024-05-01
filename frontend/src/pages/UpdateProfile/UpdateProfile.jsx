@@ -28,7 +28,7 @@ const UpdateProfile = () => {
         const userId = userData.result.id;
 
         const response = await fetch(
-          `http://localhost:5000/user/profile/${userId}`,
+          `http://inkypenapi.inkypen.com.ng/user/profile/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${userData.token}`,
@@ -76,7 +76,7 @@ const UpdateProfile = () => {
       formData.append("profilePicture", profilePicture);
 
       const response = await axios.put(
-        `http://localhost:5000/user/profile/${userData.result.id}/update`,
+        `http://inkypenapi.inkypen.com.ng/user/profile/${userData.result.id}/update`,
         formData,
         {
           headers: {

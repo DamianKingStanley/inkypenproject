@@ -15,7 +15,7 @@ const PostCardStory = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch("http://localhost:5000/posts");
+        const response = await fetch("http://inkypenapi.inkypen.com.ng/posts");
         const data = await response.json();
         const reversedData = Array.isArray(data.fetchPosts)
           ? data.fetchPosts.reverse()
@@ -53,7 +53,7 @@ const PostCardStory = () => {
   const handlePostClick = async (postId) => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/posts/${postId}/view`
+        `http://inkypenapi.inkypen.com.ng/posts/${postId}/view`
       );
       console.log("View count updated:", response);
 
@@ -84,7 +84,7 @@ const PostCardStory = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:5000/posts/${postId}/like`,
+        `http://inkypenapi.inkypen.com.ng/posts/${postId}/like`,
         {},
         {
           headers: {

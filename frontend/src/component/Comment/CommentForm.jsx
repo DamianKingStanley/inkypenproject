@@ -17,7 +17,7 @@ const CommentForm = ({ postId, refreshComments }) => {
     try {
       const userId = loggedInUser.result.id; // Accessing the user ID from the 'result' property
       const response = await axios.post(
-        `http://localhost:5000/${postId}/comments`,
+        `http://inkypenapi.inkypen.com.ng/${postId}/comments`,
         {
           content: comment,
           post: postId,
